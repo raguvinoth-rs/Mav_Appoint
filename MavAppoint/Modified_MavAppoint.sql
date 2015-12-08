@@ -1,3 +1,5 @@
+drop database mavapt;
+
 create database mavapt;
 
 use mavapt;
@@ -61,3 +63,5 @@ CREATE TABLE DEPARTMENT_SETTINGS
     ADVISING_END    TIME,
 PRIMARY KEY(ID)
 ) ENGINE=InnoDB;
+
+
