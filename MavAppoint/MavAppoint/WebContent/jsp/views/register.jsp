@@ -1,4 +1,9 @@
 <%@include file="templates/header.jsp"%>
+<html>
+<head>
+
+</head>
+<body>
 	<div class="container">
 	<form action="#" method="post">
 	<div class="row">
@@ -20,5 +25,15 @@
 		</div>
 	</div>
 	</div>
-	<button type="submit" class="btn btn-primary">Submit</button></p>	
+	<button type="submit" class="btn btn-primary" onclick="Submit()">Submit</button></p>
+	</form>
+	</div>
+	
+	<!-- Validation Part -->
+	<script type="text/javascript">
+	
+	</script>
+	
+	</body>
+</html>	
 <%@include file="templates/footer.jsp"%>
