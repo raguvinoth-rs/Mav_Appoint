@@ -69,5 +69,5 @@
 		</div>
 	</div>
 
-
+<!-- fjfjtiutuituiftmtutmutmdmumudjtdjtjujtju -->
 <%@ include file="templates/footer.jsp" %>
