@@ -25,7 +25,7 @@
 		</div>
 	</div>
 	</div>
-	<button type="submit" class="btn btn-primary" onclick="Submit()">Submit</button></p>
+	<button type="submit" class="btn btn-primary" onclick="Submit()">Submit</button>
 	</form>
 	</div>
 	
