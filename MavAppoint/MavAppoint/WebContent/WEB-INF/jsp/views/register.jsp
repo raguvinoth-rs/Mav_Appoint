@@ -1,5 +1,6 @@
 <%@include file="templates/header.jsp"%>
-
+<html>
+<head>
 <script type="text/javascript">
 var ieDOM = false, nsDOM = false;
 var stdDOM = document.getElementById;
@@ -109,8 +110,25 @@ function validateConfirmPassword()
 	}
 }
 
+function get_action(form) {
+    var v = g-recaptcha.getResponse();
+    if(v.length == 0)
+    {
+        document.getElementById('captcha').innerHTML="You can't leave Captcha Code empty";
+        return false;
+    }
+    if(v.length != 0)
+    {
+        document.getElementById('captcha').innerHTML="Captcha completed";
+        return true; 
+    }
+}
 </script>
 
+
+</head>
+
+<body>
 <div class="container">
 	<form action="#" method="post">
 	
@@ -141,11 +159,17 @@ function validateConfirmPassword()
 			
             <label style="color:#F90" for="repeatPassword">Repeat Password</label>
 			<input type="password" class="form-control" id=repeatPassword required="required" >
-			</div>
-		</div>
-	</div>
-	<button type="submit" class="btn btn-primary" >Submit</button>
-	</form>
-</div>	
 
+		<div class="g-recaptcha" data-sitekey="6LcCnRITAAAAABzlmcjGPZAPEefbz4qYrPLG4qE9"></div>
+	
+ 	
+			</div>
+			</div>
+	</div>
+	<input type="submit" class="btn btn-primary" onClick="get_action(this)" value="Submit">
+	</form>
+</div>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+</body>	
+</html>
 <%@include file="templates/footer.jsp"%>
