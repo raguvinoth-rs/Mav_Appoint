@@ -23,7 +23,7 @@
 		if(rs.getString(2).equals(emailid)) 
 		{ 
 			//ResultSet rs1=st.executeQuery("UPDATE `mavappointdb`.`user` SET `USERPASSWORD`='pwchangetemp' WHERE `USERID`='"+userid+"'");
-			String queryString = "UPDATE mavappointdb.user SET USERPASSWORD='pwchangetemp' WHERE USERID='"+userid+"'";
+			String queryString = "UPDATE mavappointdb.user SET USERPASSWORD='pwchangetemp' WHERE USERID='"+userid+"' AND EMAIL='"+emailid+"'";
 			pstatement = con.prepareStatement(queryString);
 			int updateQuery = pstatement.executeUpdate();
 			out.println("New Password has been sent to Your Email. Please Log In again with that."); 
@@ -36,6 +36,6 @@
 		} 
 		else 
 	%>
-<a href="index">Home</a>
+<a href="login">Login</a>
 </body>
 </html>
