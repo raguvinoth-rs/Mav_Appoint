@@ -1,59 +1,41 @@
-<%@ include file="WEB-INF/jsp/views/templates/header.jsp" %>
-<style>
-.panel-heading {
-    padding: 5px 15px;
-}
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
-.panel-footer {
-	padding: 1px 15px;
-	color: #A0A0A0;
-}
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Forgot Password</title>
+</head>
+<body>
+	<%@ page import="java.sql.*"%>
+	<%@ page import="javax.sql.*"%>
+	<%
+		String userid=request.getParameter("usr"); 
+		session.putValue("userid",userid); 
+		String emailid=request.getParameter("emailid"); 
+		Class.forName("com.mysql.jdbc.Driver"); 
+		java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/MavAppointDB","root","willpower"); 
+		Statement st= con.createStatement(); 
+		ResultSet rs=st.executeQuery("SELECT * FROM mavappointdb.user where USERID='"+userid+"'"); 
+		PreparedStatement pstatement = null;
+		if(rs.next()) 
+		{ 	
+		if(rs.getString(2).equals(emailid)) 
+		{ 
+			//ResultSet rs1=st.executeQuery("UPDATE `mavappointdb`.`user` SET `USERPASSWORD`='pwchangetemp' WHERE `USERID`='"+userid+"'");
+			String queryString = "UPDATE mavappointdb.user SET USERPASSWORD='pwchangetemp' WHERE USERID='"+userid+"'";
+			pstatement = con.prepareStatement(queryString);
+			int updateQuery = pstatement.executeUpdate();
+			out.println("New Password has been sent to Your Email. Please Log In again with that."); 
 
-.profile-img {
-	width: 96px;
-	height: 96px;
-	margin: 0 auto 10px;
-	display: block;
-	-moz-border-radius: 50%;
-	-webkit-border-radius: 50%;
-	border-radius: 50%;
-}
-</style>
-
- <div class="container" style="margin-top:40px">
-		<div class="row">
-			<div class="col-sm-6 col-md-4 col-md-offset-4">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<strong> Forgot Your Password ?</strong>
-					</div>
-					<div class="panel-body">
-						<form role="form" action="#" method="POST">
-							<fieldset>
-								<div class="row">
-									<div class="col-sm-12 col-md-10  col-md-offset-1 ">
-										<div class="form-group">
-											<div class="input-group">
-												<span class="input-group-addon">
-													<Label>Email:</Label>
-												</span> 
-												<input type="text" class="form-control" name=emailAddress placeholder="Your Email">
-											</div>
-										</div>
-										<div class="form-group">
-											<input type="submit" class="btn btn-lg btn-primary btn-block" value="Submit">
-										</div>
-									</div>
-								</div>
-							</fieldset>
-						</form>
-					</div>
-					<div class="panel-footer ">
-					</div>
-                </div>
-			</div>
-		</div>
-	</div>
-
-
-<%@ include file="WEB-INF/jsp/views/templates/footer.jsp" %>
+		} 
+		else 
+		{ 
+		out.println("Invalid information try again"); 
+		} 
+		} 
+		else 
+	%>
+<a href="index">Home</a>
+</body>
+</html>
