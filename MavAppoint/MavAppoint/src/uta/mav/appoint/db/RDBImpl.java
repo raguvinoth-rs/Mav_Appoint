@@ -62,7 +62,11 @@ public class RDBImpl implements DBImplInterface{
 			SQLCmd cmd = new CheckUser(set.getEmailAddress(), set.getPassword());
 			cmd.execute();
 			user = (LoginUser)(cmd.getResult()).get(0);
-			System.out.println("user is"+ user);
+			if (user != null){
+			System.out.println("user is"+ user); }
+			else { 
+				System.out.println("Login ID or Password didn't match");
+			}
 		}
 		catch(Exception e){
 			System.out.println(e);
