@@ -124,7 +124,7 @@ function get_action(form) {
     }
 }
 </script>
-
+<script src='https://www.google.com/recaptcha/api.js'></script>
 
 </head>
 
@@ -148,7 +148,6 @@ function get_action(form) {
             <input type="password" class="form-control" id=password name="password" onkeyup="return passwordChanged();"required="required">
                           
             <TABLE style="BORDER-RIGHT: black thin solid; BORDER-TOP: black thin solid; FONT-SIZE: 75%; BORDER-LEFT: black thin solid; BORDER-BOTTOM: black thin solid; width:100%">
-<!--              cellSpacing="0"; cellPadding="0";  -->
             <TR>
             <TD id="pwWeak" style="BORDER-RIGHT: black thin solid" align="center" width="34%" title="Has at least six characters">Weak</TD>
             <TD id="pwMedium" style="BORDER-RIGHT: black thin solid" align="center" width="33%" title="Has a mix of numbers, lower & upper case characters.">Medium</TD>
@@ -169,7 +168,6 @@ function get_action(form) {
 	<input type="submit" class="btn btn-primary" onClick="get_action(this)" value="Submit">
 	</form>
 </div>
-<script src='https://www.google.com/recaptcha/api.js'></script>
 </body>	
 </html>
 <%@include file="templates/footer.jsp"%>
