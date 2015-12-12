@@ -159,9 +159,7 @@ function get_action(form) {
             <label style="color:#F90" for="repeatPassword">Repeat Password</label>
 			<input type="password" class="form-control" id=repeatPassword required="required" >
 			<br>
-			<div class="g-recaptcha" data-sitekey="6LcCnRITAAAAABzlmcjGPZAPEefbz4qYrPLG4qE9"></div>
-	
- 	
+			<div class="g-recaptcha" data-sitekey="6LcCnRITAAAAABzlmcjGPZAPEefbz4qYrPLG4qE9"></div> 	
 			</div>
 			</div>
 	</div>
