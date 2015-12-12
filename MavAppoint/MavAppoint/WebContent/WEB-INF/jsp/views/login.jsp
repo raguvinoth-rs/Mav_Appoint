@@ -54,7 +54,7 @@
 												<input type="password" class="form-control" name=password>
 											</div>
 										</div>
-										<a href="forgotPassword.jsp">Forgot Password</a><br><br>
+										<a href="forgotPassword.html">Forgot Password</a><br><br>
 										<div class="form-group">
 											<input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign in">
 										</div>
