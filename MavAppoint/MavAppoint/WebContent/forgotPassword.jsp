@@ -26,7 +26,8 @@
 			String queryString = "UPDATE mavappointdb.user SET USERPASSWORD='pwchangetemp' WHERE USERID='"+userid+"'";
 			pstatement = con.prepareStatement(queryString);
 			int updateQuery = pstatement.executeUpdate();
-			out.println("New Password has been sent to Your Email. Please Log In again with that."); 
+			out.println("<br><br>");
+			out.println("New Password has been sent to Your Email. Please check your inbox."); 
 
 		} 
 		else 
@@ -36,6 +37,7 @@
 		} 
 		else 
 	%>
+
 <a href="index">Home</a>
 </body>
 </html>

@@ -1,4 +1,4 @@
-<%@ include file="templates/header.jsp" %>
+<%@ include file="WEB-INF/jsp/views/templates/header.jsp" %>
 <style>
 .panel-heading {
     padding: 5px 15px;
@@ -25,38 +25,29 @@
 			<div class="col-sm-6 col-md-4 col-md-offset-4">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<strong> Sign in to continue</strong>
+						<strong> Forgot Your Password ?</strong>
 					</div>
 					<div class="panel-body">
-						<form role="form" action="#" method="POST">
+						<form role="form" action="forgotPassword.jsp" method="POST">
 							<fieldset>
-								<div class="row">
-									<div class="center-block">
-										<img class="profile-img"
-											src="img/mavblue.jpg" alt="">
-									</div>
-								</div>
 								<div class="row">
 									<div class="col-sm-12 col-md-10  col-md-offset-1 ">
 										<div class="form-group">
-											<div class="input-group">
+										<div class="input-group">
 												<span class="input-group-addon">
-													<i class="glyphicon glyphicon-user"></i>
+													<Label>Student ID: </Label>
 												</span> 
-												<input type="text" class="form-control" name=emailAddress placeholder="yourname@mavs.uta.edu">
+												<input type="text" class="form-control" name=usr placeholder="1000*">
 											</div>
-										</div>
-										<div class="form-group">
 											<div class="input-group">
 												<span class="input-group-addon">
-													<i class="glyphicon glyphicon-lock"></i>
-												</span>
-												<input type="password" class="form-control" name=password>
+													<Label>Email: </Label>
+												</span> 
+												<input type="text" class="form-control" name=emailid placeholder="Your Email">
 											</div>
 										</div>
-										<a href="forgotPasswordDesign.jsp">Forgot Password</a><br><br>
 										<div class="form-group">
-											<input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign in">
+											<input type="submit" class="btn btn-lg btn-primary btn-block" value="Submit">
 										</div>
 									</div>
 								</div>
@@ -71,4 +62,4 @@
 	</div>
 
 
-<%@ include file="templates/footer.jsp" %>
+<%@ include file="WEB-INF/jsp/views/templates/footer.jsp" %>
