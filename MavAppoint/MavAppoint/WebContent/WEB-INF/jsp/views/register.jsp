@@ -165,7 +165,7 @@ function get_action(form) {
 			</div>
 			</div>
 	</div>
-	<input type="submit" class="btn btn-primary" onClick="get_action(this)" value="Submit">
+	<input type="submit" class="btn btn-primary" value="Submit">
 	</form>
 </div>
 </body>	
