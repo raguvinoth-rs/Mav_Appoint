@@ -20,6 +20,7 @@ import uta.mav.appoint.login.LoginUser;
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	HttpSession session;
+	int loginAttempt;
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -43,14 +44,33 @@ public class LoginServlet extends HttpServlet {
 			//an integer indicating a role
 			DatabaseManager dbm = new DatabaseManager();
 			LoginUser user = dbm.checkUser(sets);
+//			loginAttempt = (Integer) session.getAttribute("loginCount");
+//			if(session.getAttribute("loginCount") == null){
+//				session.setAttribute("loginCount", 0);
+//				loginAttempt = 0;				
+//			}
+//			else{
+//				loginAttempt = (Integer) session.getAttribute("loginCount");
+//			}
+//			
 			if(user != null){
 				session.setAttribute("user", user);
 				response.sendRedirect("index");
+				session.setAttribute("loginCount", 0);
+				loginAttempt = 0;
 			}
 			else{
 				//redirect back to login if authentication fails
 				//need to add a "invalid username or password" response
-				response.sendRedirect("login");
+				
+				session.setAttribute("loginCount", loginAttempt++);
+				if(loginAttempt > 2){
+					System.out.println("Number of Failed Attempts: "+loginAttempt);
+					response.sendRedirect("index");
+				}
+				else{
+					response.sendRedirect("login");
+				}
 			}
 		}
 		catch(Exception e){
