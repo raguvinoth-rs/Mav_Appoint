@@ -101,8 +101,8 @@
 <script> function FormSubmit(){
 									var student_email = document.getElementById("email").value;
 									var advisor_email = document.getElementById("advisor_email").value;
-									var starttime = document.getElementById("starttime").value;
-									var endtime = document.getElementById("endtime").value;
+									var starttime = "Maverick Appointments Advising Meeting Request";
+									var endtime = "This is an email from Maverick Appointments. Please do not reply to this email";
 									var params = ('student_email='+student_email+'&advisor_email='+advisor_email+'&starttime='+starttime+'&endtime='+endtime);
 									var xmlhttp;
 									xmlhttp = new XMLHttpRequest();

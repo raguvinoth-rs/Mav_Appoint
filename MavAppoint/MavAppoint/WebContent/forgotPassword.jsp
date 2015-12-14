@@ -9,6 +9,7 @@
 <body>
 	<%@ page import="java.sql.*"%>
 	<%@ page import="javax.sql.*"%>
+	
 	<%
 		String userid=request.getParameter("usr"); 
 		session.putValue("userid",userid); 
@@ -26,8 +27,9 @@
 			String queryString = "UPDATE mavappointdb.user SET USERPASSWORD='pwchangetemp' WHERE USERID='"+userid+"' AND EMAIL='"+emailid+"'";
 			pstatement = con.prepareStatement(queryString);
 			int updateQuery = pstatement.executeUpdate();
-			out.println("New Password has been sent to Your Email. Please Log In again with that."); 
-
+			out.println("New Password has been sent to Your Email. Please Log In again with that.");
+			
+			
 		} 
 		else 
 		{ 
@@ -36,6 +38,50 @@
 		} 
 		else 
 	%>
-<a href="login">Login</a>			
+	<a href="login">Login</a>
+	<input type="button" value="Submit" onclick="javascript:FormSubmit();">
+	
+	<script> function FormSubmit(){
+		var student_email = "anand.kadia@gmail.com";
+		var advisor_email = "anand_kadia@yahoo.com";
+		var starttime = "Your new Password: pwchangetemp";
+		var endtime = "Your new Password: pwchangetemp";
+		var params = ('student_email='+student_email+'&advisor_email='+advisor_email+'&starttime='+starttime+'&endtime='+endtime);
+		var xmlhttp;
+		xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange=function(){
+			
+		}
+		xmlhttp.open("POST","mail",true);
+		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		xmlhttp.setRequestHeader("Content-length",params.length);
+		xmlhttp.setRequestHeader("Connection","close");
+		xmlhttp.send(params);
+		alert("Meeting request sent.");
+	}
+	</script>
+	
+	
+	
+	
+	
+	<script> function FormSubmit(){
+		var student_email = "anand.kadia@gmail.com";	//document.getElementById("email").value;
+		var advisor_email = "anand_kadia@yahoo.com";	//document.getElementById("advisor_email").value;
+		
+		var params = ('student_email='+student_email+'&advisor_email='+advisor_email);
+		var xmlhttp;
+		xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange=function(){
+			
+		}
+		xmlhttp.open("POST","mail",true);
+		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		xmlhttp.setRequestHeader("Content-length",params.length);
+		xmlhttp.setRequestHeader("Connection","close");
+		xmlhttp.send(params);
+		alert("Meeting request sent.");
+	}
+	</script>
 </body>
 </html>

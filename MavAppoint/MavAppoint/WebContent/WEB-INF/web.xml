@@ -137,6 +137,13 @@
       <servlet-name>AddAppointmentServlet</servlet-name>
       <servlet-class>uta.mav.appoint.AddAppointmentServlet</servlet-class>
   </servlet>
- 
+ <servlet>
+      <servlet-name>SendMeetingServlet2</servlet-name>
+      <servlet-class>uta.mav.appoint.SendMeetingServlet2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>SendMeetingServlet2</servlet-name>
+      <url-pattern>/forgetPasswordRecovery</url-pattern>
+  </servlet-mapping>
   
 </web-app>
