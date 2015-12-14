@@ -8,6 +8,7 @@ public class PrimitiveTimeSlot extends TimeSlotComponent{
 	private String starttime;
 	private String endtime;
 	private int uniqueid;
+	private int studentid;
 	
 	
 	@Override
@@ -78,6 +79,16 @@ public class PrimitiveTimeSlot extends TimeSlotComponent{
 	@Override
 	public void setUniqueId(int uniqueid) {
 		this.uniqueid = uniqueid;
+	}
+	
+	@Override
+	public int getStudentId() {
+		return studentid;
+	}
+	
+	@Override
+	public void setStudentId(int studentid) {
+		this.studentid = studentid;
 	}
 	
 }

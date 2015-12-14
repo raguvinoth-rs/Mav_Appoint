@@ -118,11 +118,12 @@
 				<div class="modal-body">
 						<input type="hidden" name=id2 id="id2" readonly>
 						<b>Type:</b><input type="label" name=apptype id="apptype"><br>
-						<b>Date:    </b><input type="text" id="date"><br>
-						<b>Start:   </b><input type="label" name=start id="start"><br>
-						<b>End:     </b><input type="label" name=end id="end"><br>
-						<b>Advisor: </b><input type="label" name=pname id="pname"><br>
-						<b>UTA Student ID: </b><br><input type="text" name=studentid id="studentid"><br>
+						<b>Date:    </b><input type="text" name=date id="date" readonly><br>
+						<b>Start:   </b><input type="label" name=start id="start" readonly><br>
+						<b>End:     </b><input type="label" name=end id="end" readonly><br>
+						<input type="hidden" name=pname id="pname">
+						<b>UTA EmailID: </b><br><input type="text" name=studentid id="studentid"><br>
+						<b>UTA Student ID: </b><br><input type="text" name=utastudentid id="utastudentid"><br>
 						<b>Description:</b><br><textarea rows=4 columns="10" name=description id="description"></textarea>
 				</div>
 				<div class="modal-footer">

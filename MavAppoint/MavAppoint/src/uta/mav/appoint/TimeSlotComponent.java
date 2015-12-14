@@ -24,6 +24,14 @@ public abstract class TimeSlotComponent implements Serializable{
 	public abstract String getDate();
 	public abstract String getEvent(int m);
 	public abstract ArrayList<TimeSlotComponent> expandTimeSlots(ArrayList<TimeSlotComponent> ts);
+	public int getStudentId() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	public void setStudentId(int studentid) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }

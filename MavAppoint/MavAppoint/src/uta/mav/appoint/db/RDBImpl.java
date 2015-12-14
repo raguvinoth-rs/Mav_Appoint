@@ -139,12 +139,12 @@ public class RDBImpl implements DBImplInterface{
 			Connection conn = this.connectDB();
 			PreparedStatement statement;
 			if (name.equals("all")){
-			String command = "SELECT pname,advising_date,advising_starttime,advising_endtime,id FROM user,advising_schedule,advisor_settings "
+			String command = "SELECT pname,advising_date,advising_starttime,advising_endtime,id, advising_schedule.studentid FROM user,advising_schedule,advisor_settings "
 							+ "WHERE user.userid=advisor_settings.userid AND user.userid=advising_schedule.userid AND studentid is null";
 			statement = conn.prepareStatement(command);
 			}
 			else{
-				String command = "SELECT pname,advising_date,advising_starttime,advising_endtime,id FROM USER,ADVISING_SCHEDULE,ADVISOR_SETTINGS "
+				String command = "SELECT pname,advising_date,advising_starttime,advising_endtime,id, advising_schedule.studentid FROM USER,ADVISING_SCHEDULE,ADVISOR_SETTINGS "
 								+ "WHERE USER.userid=ADVISOR_SETTINGS.userid AND USER.userid=ADVISING_SCHEDULE.userid AND USER.userid=ADVISING_SCHEDULE.userid AND ADVISOR_SETTINGS.pname=? AND studentid is null";
 				statement = conn.prepareStatement(command);
 				statement.setString(1,name);
@@ -158,6 +158,7 @@ public class RDBImpl implements DBImplInterface{
 				set.setStartTime(res.getString(3));
 				set.setEndTime(res.getString(4));
 				set.setUniqueId(res.getInt(5));
+				set.setStudentId(res.getInt(6));
 				array.add(set);
 			}
 			array = TimeSlotHelpers.createCompositeTimeSlot(array);
