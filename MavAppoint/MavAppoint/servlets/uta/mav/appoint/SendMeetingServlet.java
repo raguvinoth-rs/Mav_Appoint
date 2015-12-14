@@ -53,23 +53,22 @@ public class SendMeetingServlet extends HttpServlet{
 			String port = "465";
 			String to = request.getParameter("student_email");
 			String advisor_email = request.getParameter("advisor_email");
-			String summary = request.getParameter("starttime");
-			String description = request.getParameter("endtime");
-//			String starttime = request.getParameter("starttime");
-//			String endtime = request.getParameter("endtime");
+			String starttime = request.getParameter("starttime");
+			String endtime = request.getParameter("endtime");
 
-//			//convert start and end times to correct format
-//			String[] parts = starttime.split("T");
-//			String[] date = parts[0].split("-");
-//			String[] start = parts[1].split(":");
-//			starttime = date[0]+date[1]+date[2]+"T"+start[0]+start[1];
-//			parts = endtime.split("T");
-//			String[] end = parts[1].split(":");
-//			endtime = date[0]+date[1]+date[2]+"T"+end[0]+end[1];
+			//convert start and end times to correct format
+			String[] parts = starttime.split("T");
+			String[] date = parts[0].split("-");
+			String[] start = parts[1].split(":");
+			starttime = date[0]+date[1]+date[2]+"T"+start[0]+start[1];
+			parts = endtime.split("T");
+			String[] end = parts[1].split(":");
+			endtime = date[0]+date[1]+date[2]+"T"+end[0]+end[1];
+
 			
-			//String description = "This is an email from Maverick Appointments. Please do not reply to this email.";
-			//String summary = "Maverick Appointments Advising Meeting Request";
-			//UID uid = new UID();
+			String description = "This is a meeting request from Maverick Appointments. Please do not reply to this email.";
+			String summary = "Maverick Appointments Advising Meeting Request";
+			UID uid = new UID();
 			Properties properties = System.getProperties();
 			properties.put("mail.smtp.starttls.enable","true");
 			properties.put("mail.smtp.host",host);
@@ -96,50 +95,50 @@ public class SendMeetingServlet extends HttpServlet{
 			message.setFrom(new InternetAddress(from));   
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(advisor_email));
-			message.setSubject(summary);  
+			message.setSubject("Meeting Request from Maverick Appointments");  
 			StringBuffer sb = new StringBuffer();    
-			StringBuffer buffer = sb.append("Your Appointment has been Successfully registered!" +summary+" "+description);
-//					"BEGIN:VCALENDAR\r\n"+
-//							"PRODID:-//Microsoft Corporation//Outlook 9.0 MIMEDIR//EN\r\n"+  
-//							"VERSION:2.0\r\n" +  
-//							"METHOD:REQUEST\r\n" +
-//							"BEGIN:VTIMEZONE\r\n"+
-//								"TZID:Central Standard Time\r\n"+
-//								"BEGIN:STANDARD\r\n"+
-//									"DTSTART:16011104T020000\r\n"+
-//									"RRULE:FREQ=YEARLY;BYDAY=1SU;BYMONTH=11\r\n"+
-//									"TZOFFSETFROM:-0500\r\n"+
-//									"TZOFFSETTO:-0600\r\n"+
-//								"END:STANDARD\r\n"+
-//								"BEGIN:DAYLIGHT\r\n"+
-//									"DTSTART:16010311T020000\r\n"+
-//									"RRULE:FREQ=YEARLY;BYDAY=2SU;BYMONTH=3\r\n"+
-//									"TZOFFSETFROM:-0600\r\n"+
-//									"TZOFFSETTO:-0500\r\n"+
-//								"END:DAYLIGHT\r\n"+
-//							"END:VTIMEZONE\r\n"+
-//							"BEGIN:VEVENT\r\n" +  
-//								"ATTENDEE;ROLE=REQ-PARTICIPANT;RSVP=TRUE:MAILTO:" + to + "\r\n" +   
-//								"ORGANIZER:MAILTO:" + advisor_email + "\r\n" +   
-//								"DTSTART;TZID=Central Standard Time:" + starttime + "00\r\n" +   
-//								"DTEND;TZID=Central Standard Time:" + endtime + "00\r\n" +   
-//								"LOCATION:Advisor Office\r\n" +  
-//								"TR1ANSP:OPAQUE\r\n" +  
-//								"SEQUENCE:0\r\n" +  
-//								"UID:"+uid+"\r\n"+ 
-//								"DTSTAMP:20141118T120102\r\n" +   
-//								"CATEGORIES:Meeting\r\n" +  
-//								"DESCRIPTION: " + description + "\r\n" +  
-//								"SUMMARY: " + summary + "\r\n" +   
-//								"PRIORITY:1\r\n" +  
-//								"CLASS:PUBLIC\r\n" +   
-//								"BEGIN:VALARM\r\n" +   
-//									"TRIGGER:PT1440M\r\n" +  
-//									"ACTION:DISPLAY\r\n" +   
-//									"DESCRIPTION:Reminder\r\n" +  
-//								"END:VALARM\r\n" +  
-//							"END:VEVENT\r\n" +
-//					"END:VCALENDAR");  // Create the message part  
+			StringBuffer buffer = sb.append(
+					"BEGIN:VCALENDAR\r\n"+
+							"PRODID:-//Microsoft Corporation//Outlook 9.0 MIMEDIR//EN\r\n"+  
+							"VERSION:2.0\r\n" +  
+							"METHOD:REQUEST\r\n" +
+							"BEGIN:VTIMEZONE\r\n"+
+								"TZID:Central Standard Time\r\n"+
+								"BEGIN:STANDARD\r\n"+
+									"DTSTART:16011104T020000\r\n"+
+									"RRULE:FREQ=YEARLY;BYDAY=1SU;BYMONTH=11\r\n"+
+									"TZOFFSETFROM:-0500\r\n"+
+									"TZOFFSETTO:-0600\r\n"+
+								"END:STANDARD\r\n"+
+								"BEGIN:DAYLIGHT\r\n"+
+									"DTSTART:16010311T020000\r\n"+
+									"RRULE:FREQ=YEARLY;BYDAY=2SU;BYMONTH=3\r\n"+
+									"TZOFFSETFROM:-0600\r\n"+
+									"TZOFFSETTO:-0500\r\n"+
+								"END:DAYLIGHT\r\n"+
+							"END:VTIMEZONE\r\n"+
+							"BEGIN:VEVENT\r\n" +  
+								"ATTENDEE;ROLE=REQ-PARTICIPANT;RSVP=TRUE:MAILTO:" + to + "\r\n" +   
+								"ORGANIZER:MAILTO:" + advisor_email + "\r\n" +   
+								"DTSTART;TZID=Central Standard Time:" + starttime + "00\r\n" +   
+								"DTEND;TZID=Central Standard Time:" + endtime + "00\r\n" +   
+								"LOCATION:Advisor Office\r\n" +  
+								"TRANSP:OPAQUE\r\n" +  
+								"SEQUENCE:0\r\n" +  
+								"UID:"+uid+"\r\n"+ 
+								"DTSTAMP:20141118T120102\r\n" +   
+								"CATEGORIES:Meeting\r\n" +  
+								"DESCRIPTION: " + description + "\r\n" +  
+								"SUMMARY: " + summary + "\r\n" +   
+								"PRIORITY:1\r\n" +  
+								"CLASS:PUBLIC\r\n" +   
+								"BEGIN:VALARM\r\n" +   
+									"TRIGGER:PT1440M\r\n" +  
+									"ACTION:DISPLAY\r\n" +   
+									"DESCRIPTION:Reminder\r\n" +  
+								"END:VALARM\r\n" +  
+							"END:VEVENT\r\n" +
+					"END:VCALENDAR");  // Create the message part  
 	   
 				BodyPart messageBodyPart = new MimeBodyPart();   
 	   // Fill the message    
