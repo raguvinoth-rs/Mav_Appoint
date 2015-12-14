@@ -86,7 +86,7 @@ public class SendMeetingServlet extends HttpServlet{
 							return new PasswordAuthentication("maverickappointments@gmail.com","gue#212!ns");
 						}
 			});
-		
+			String temp = "Meeting Request from Maverick Appointments";
 			// Define message   
 			MimeMessage message = new MimeMessage(session);  
 			message.addHeaderLine("method=REQUEST");  
@@ -95,7 +95,7 @@ public class SendMeetingServlet extends HttpServlet{
 			message.setFrom(new InternetAddress(from));   
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(advisor_email));
-			message.setSubject("Meeting Request from Maverick Appointments");  
+			message.setSubject(temp);  
 			StringBuffer sb = new StringBuffer();    
 			StringBuffer buffer = sb.append(
 					"BEGIN:VCALENDAR\r\n"+

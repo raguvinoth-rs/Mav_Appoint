@@ -75,3 +75,10 @@ INSERT INTO USER (USERID,email,USERPASSWORD,role,validated) VALUES('1000100021',
 INSERT INTO USER (USERID,email,USERPASSWORD,role,validated) VALUES('1000100022','teststudent3@mavs.uta.edu','test1234','student',1);
 INSERT INTO USER (USERID,email,USERPASSWORD,role,validated) VALUES('1000100023','teststudent4@mavs.uta.edu','test1234','student',1);
 INSERT INTO USER (USERID,email,USERPASSWORD,role,validated) VALUES('1000100031','testfaculty@uta.edu','test1234','faculty',1);
+
+INSERT INTO APPOINTMENT_TYPES (USERID,APT_TYPE,duration) VALUES(1000100020,'Drop Class',5);
+INSERT INTO APPOINTMENT_TYPES (USERID,APT_TYPE,duration) VALUES(1000100021,'Add Class',5);
+INSERT INTO APPOINTMENT_TYPES (USERID,APT_TYPE,duration) VALUES(1000100022,'Transfer Student',10);
+INSERT INTO ADVISOR_SETTINGS VALUES(1000100010,'Dr. Elmasri','testadvisor1@uta.edu','day');
+INSERT INTO ADVISOR_SETTINGS VALUES(1000100011,'Dr. Khalili','testadvisor2@uta.edu','day');
+INSERT INTO ADVISOR_SETTINGS VALUES(1000100012,'Eric Mason','testadvisor3@uta.edu','day');
