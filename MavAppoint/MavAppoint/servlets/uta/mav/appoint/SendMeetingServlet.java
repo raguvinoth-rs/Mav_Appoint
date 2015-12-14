@@ -64,7 +64,9 @@ public class SendMeetingServlet extends HttpServlet{
 			
 			if(starttime.equals("0000-00-00T00:00:00"))
 				flag = 0;
-			
+			else if(starttime.equals("1111-11-11T11:11:11")){
+				flag = 2;
+			}
 			if(flag == 1)
 			{
 				description = "From Maverick Appointments. Please do not reply to this email.";
@@ -119,6 +121,11 @@ public class SendMeetingServlet extends HttpServlet{
 									"END:VALARM\r\n" +  
 								"END:VEVENT\r\n" +
 						"END:VCALENDAR");  // Create the message part  
+			}
+			else if(flag == 2){
+				description = "As three login attempts failed. Your password has been reseted to: Newpass12!";
+				summary = "Reset due to Failed Password Attempts";  
+				buffer = sb.append("LOLOLOLO");
 			}
 			else
 			{
@@ -175,9 +182,12 @@ public class SendMeetingServlet extends HttpServlet{
 		   message.setContent(multipart);    
  
 	   }
-	   else
+	   else if(flag == 0)
 	   {
 		   message.setText("Your new password is: pwchangetemp");
+	   }
+	   else{
+		   message.setText("Your new password is: Newpass12!");
 	   }
 	   // send message   
 	   Transport.send(message);    

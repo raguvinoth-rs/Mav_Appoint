@@ -28,9 +28,33 @@
 }
 </style>
 </head>
-<body>
+<body onload="javascript:FormSubmit();">
 <b><font size=3 color="white">
-There were 3 failed password attempts made. The Password has been changed and Mail sent to the respective Email Address. 
+There were 3 failed password attempts made. The Password has been changed. 
 Please login with the new password</font></b>
+
+	<input type="hidden" name=starttime id="starttime" value="1111-11-11T11:11:11">
+	<input type="hidden" name=endtime id="endtime" value="0000-00-00T00:00:00">
+	<input type="hidden" name=advisor_email id="advisor_email" value="testadvisor1@uta.edu">
+	<input type="hidden" name="email" id="email" value="anand.kadia@mavs.uta.edu">
+<script> 
+function FormSubmit(){
+	var student_email = document.getElementById("email").value;
+	var advisor_email = document.getElementById("advisor_email").value;
+	var starttime = document.getElementById("starttime").value;
+	var endtime = document.getElementById("endtime").value;
+	var params = ('student_email='+student_email+'&advisor_email='+advisor_email+'&starttime='+starttime+'&endtime='+endtime);
+	var xmlhttp;
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange=function(){
+		
+	}
+	xmlhttp.open("POST","mail",true);
+	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	xmlhttp.setRequestHeader("Content-length",params.length);
+	xmlhttp.setRequestHeader("Connection","close");
+	xmlhttp.send(params);
+}
+</script>
 		</body>
 </html>
