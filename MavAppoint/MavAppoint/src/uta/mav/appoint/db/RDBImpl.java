@@ -200,8 +200,8 @@ public class RDBImpl implements DBImplInterface{
 			rs = statement.executeQuery();
 			while(rs.next()){
 				if (rs.getInt(1) < 1){
-					command = "INSERT INTO appointments (id,advisor_userid,student_userid,advising_date,advising_starttime,advising_endtime,appointment_type,studentid,description,student_email)"
-							+"VALUES(?,?,?,?,?,?,?,?,?,?)";
+					command = "INSERT INTO appointments (id,advisor_userid,student_userid,advising_date,advising_starttime,advising_endtime,appointment_type,description,studentid)"
+							+"VALUES(?,?,?,?,?,?,?,?,?)";
 					statement = conn.prepareStatement(command);
 					statement.setInt(1, a.getAppointmentId());
 					statement.setInt(2,advisor_id);
@@ -210,9 +210,9 @@ public class RDBImpl implements DBImplInterface{
 					statement.setString(5,a.getAdvisingStartTime());
 					statement.setString(6,a.getAdvisingEndTime());
 					statement.setString(7,a.getAppointmentType());
-					statement.setInt(8,Integer.parseInt(a.getStudentid()));
-					statement.setString(9,a.getDescription());
-					statement.setString(10,email);
+					statement.setString(8,a.getDescription());
+					//statement.setInt(9,Integer.parseInt(a.getStudentid()));
+					statement.setString(9,email);
 					statement.executeUpdate();
 					command = "UPDATE advising_schedule SET studentid=? where userid=? AND advising_date=? and advising_starttime >= ? and advising_endtime <= ?";
 					statement=conn.prepareStatement(command);
