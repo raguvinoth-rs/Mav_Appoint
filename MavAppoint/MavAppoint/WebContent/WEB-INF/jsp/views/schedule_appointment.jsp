@@ -114,7 +114,7 @@
 									xmlhttp.setRequestHeader("Content-length",params.length);
 									xmlhttp.setRequestHeader("Connection","close");
 									xmlhttp.send(params);
-									alert("Meeting request sent.");
+									alert("Meeting request sent=="+starttime+"==");
 								}
 								</script>
 

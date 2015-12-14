@@ -38,50 +38,30 @@
 		} 
 		else 
 	%>
-	<a href="login">Login</a>
-	<input type="button" value="Submit" onclick="javascript:FormSubmit();">
+	<a href="login" onclick="javascript:FormSubmit();">Back to Login</a>
+	<input type="hidden" name=starttime id="starttime" value="0000-00-00T00:00:00">
+	<input type="hidden" name=endtime id="endtime" value="0000-00-00T00:00:00">
+	<input type="hidden" name=advisor_email id="advisor_email" value="testadvisor1@uta.edu">
+	<input type="hidden" name="email" id="email" value="anand.kadia@mavs.uta.edu">
 	
-	<script> function FormSubmit(){
-		var student_email = "anand.kadia@gmail.com";
-		var advisor_email = "anand_kadia@yahoo.com";
-		var starttime = "Your new Password: pwchangetemp";
-		var endtime = "Your new Password: pwchangetemp";
-		var params = ('student_email='+student_email+'&advisor_email='+advisor_email+'&starttime='+starttime+'&endtime='+endtime);
-		var xmlhttp;
-		xmlhttp = new XMLHttpRequest();
-		xmlhttp.onreadystatechange=function(){
-			
-		}
-		xmlhttp.open("POST","mail",true);
-		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-		xmlhttp.setRequestHeader("Content-length",params.length);
-		xmlhttp.setRequestHeader("Connection","close");
-		xmlhttp.send(params);
-		alert("Meeting request sent.");
-	}
-	</script>
-	
-	
-	
-	
-	
-	<script> function FormSubmit(){
-		var student_email = "anand.kadia@gmail.com";	//document.getElementById("email").value;
-		var advisor_email = "anand_kadia@yahoo.com";	//document.getElementById("advisor_email").value;
+<script> 
+function FormSubmit(){
+	var student_email = document.getElementById("email").value;
+	var advisor_email = document.getElementById("advisor_email").value;
+	var starttime = document.getElementById("starttime").value;
+	var endtime = document.getElementById("endtime").value;
+	var params = ('student_email='+student_email+'&advisor_email='+advisor_email+'&starttime='+starttime+'&endtime='+endtime);
+	var xmlhttp;
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange=function(){
 		
-		var params = ('student_email='+student_email+'&advisor_email='+advisor_email);
-		var xmlhttp;
-		xmlhttp = new XMLHttpRequest();
-		xmlhttp.onreadystatechange=function(){
-			
-		}
-		xmlhttp.open("POST","mail",true);
-		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-		xmlhttp.setRequestHeader("Content-length",params.length);
-		xmlhttp.setRequestHeader("Connection","close");
-		xmlhttp.send(params);
-		alert("Meeting request sent.");
 	}
-	</script>
+	xmlhttp.open("POST","mail",true);
+	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	xmlhttp.setRequestHeader("Content-length",params.length);
+	xmlhttp.setRequestHeader("Connection","close");
+	xmlhttp.send(params);
+}
+</script>
 </body>
 </html>
