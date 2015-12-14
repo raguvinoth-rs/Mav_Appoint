@@ -29,9 +29,9 @@ public class AdvisingServlet extends HttpServlet{
 		session = request.getSession();
 		LoginUser user = (LoginUser)session.getAttribute("user");
 		if (user != null){
-			user = new LoginUser();
-			session.setAttribute("user", user);
-		}
+//			user = new LoginUser();
+//			session.setAttribute("user", user);
+//		}
 		try{
 				header = "templates/" + user.getHeader() + ".jsp";
 				//must be logged in to see advisor schedules - safety concern
@@ -50,8 +50,16 @@ public class AdvisingServlet extends HttpServlet{
 				}
 		}
 		catch(Exception e){
-			
+			System.out.println("Index error : " + e);
 		}
+	}
+	else{
+		if (user == null){
+			user = new LoginUser();
+			session.setAttribute("user", user);
+		}
+		header = "templates/header.jsp";
+	}
 		request.setAttribute("includeHeader", header);
 		request.getRequestDispatcher("/WEB-INF/jsp/views/advising.jsp").forward(request, response);
 	}
@@ -60,8 +68,8 @@ public class AdvisingServlet extends HttpServlet{
 		session = request.getSession();
 		LoginUser user = (LoginUser)session.getAttribute("user");
 		if (user != null){
-			user = new LoginUser();
-		}
+//			user = new LoginUser();
+//		}
 		try{
 					header = "templates/" + user.getHeader() + ".jsp";
 					DatabaseManager dbm = new DatabaseManager();
@@ -84,6 +92,14 @@ public class AdvisingServlet extends HttpServlet{
 		}
 		catch(Exception e){
 			System.out.printf(e.toString());
+		}
+		}
+		else{
+			if (user == null){
+				user = new LoginUser();
+				session.setAttribute("user", user);
+			}
+			header = "templates/header.jsp";
 		}
 		request.setAttribute("includeHeader", header);
 		request.getRequestDispatcher("/WEB-INF/jsp/views/advising.jsp").forward(request, response);
