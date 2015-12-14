@@ -214,6 +214,7 @@ public class RDBImpl implements DBImplInterface{
 					//statement.setInt(9,Integer.parseInt(a.getStudentid()));
 					statement.setString(9,email);
 					statement.executeUpdate();
+					//Advising Schedule Update
 					command = "UPDATE advising_schedule SET studentid=? where userid=? AND advising_date=? and advising_starttime >= ? and advising_endtime <= ?";
 					statement=conn.prepareStatement(command);
 					statement.setInt(1,Integer.parseInt(a.getStudentid()));
