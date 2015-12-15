@@ -67,6 +67,9 @@ public class SendMeetingServlet extends HttpServlet{
 			else if(starttime.equals("1111-11-11T11:11:11")){
 				flag = 2;
 			}
+			else if(starttime.equals("2222-22-22T22:22:22")){
+				flag = 3;
+			}
 			if(flag == 1)
 			{
 				description = "From Maverick Appointments. Please do not reply to this email.";
@@ -127,11 +130,16 @@ public class SendMeetingServlet extends HttpServlet{
 				summary = "Reset due to Failed Password Attempts";  
 				buffer = sb.append("LOLOLOLO");
 			}
-			else
+			else if(flag == 0)
 			{
 				description = "New Password: pwchangetemp";
 				summary = "Your Password has been Reset.";  
 				buffer = sb.append("LOLOLOLO");
+			}
+			else if(flag == 3){
+					description = "As you have FAILED to attend the Advising session, you have been 20$ as penality";
+					summary = "Penality - Failed to attend Advising Session";  
+					buffer = sb.append("LOLOLOLO");
 			}
 
 
@@ -186,8 +194,11 @@ public class SendMeetingServlet extends HttpServlet{
 	   {
 		   message.setText("Your new password is: pwchangetemp");
 	   }
-	   else{
+	   else if(flag == 2){
 		   message.setText("Your new password is: Newpass12!");
+	   }
+	   else if(flag == 3){
+		   message.setText("Your penality amount is: $20.00");
 	   }
 	   // send message   
 	   Transport.send(message);    

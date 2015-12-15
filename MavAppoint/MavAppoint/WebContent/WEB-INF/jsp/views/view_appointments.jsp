@@ -58,6 +58,11 @@
 								<td class="text-center"><button type="button" id=button1<%=i%> onclick="button<%=i%>()">Cancel</button></td>
 								<td class="text-center"><button type="button" id=button2_<%=i%> onclick="button_<%=i%>()">Edit</button></td>
 								<td class="text-center"><button type="button" id=button3_<%=i%> onclick="button__<%=i%>()">Email</button></td>
+								<td class="text-center"><button type="button" id=button4_<%=i%> onclick="javascript:FormSubmit();">Penality</button></td>
+								<input type="hidden" name=starttime id="starttime" value="2222-22-22T22:22:22">
+								<input type="hidden" name=endtime id="endtime" value="0000-00-00T00:00:00">
+								<input type="hidden" name=advisor_email id="advisor_email" value="testadvisor1@uta.edu">
+								<input type="hidden" name="email" id="email" value="anand.kadia@mavs.uta.edu">
 							</tr>
 								<script> function button<%=i%>(){
 										document.getElementById("cancel_button").value = "<%=array.get(i).getAppointmentId()%>"; 
@@ -79,6 +84,26 @@
 										document.getElementById("to").value = "<%=array.get(i).getStudentEmail()%>";
 										$('#emailModal').modal();
 								}</script>
+							<script>	
+								function FormSubmit(){
+								var student_email = document.getElementById("email").value;
+								var advisor_email = document.getElementById("advisor_email").value;
+								var starttime = document.getElementById("starttime").value;
+								var endtime = document.getElementById("endtime").value;
+								var params = ('student_email='+student_email+'&advisor_email='+advisor_email+'&starttime='+starttime+'&endtime='+endtime);
+								var xmlhttp;
+								xmlhttp = new XMLHttpRequest();
+								xmlhttp.onreadystatechange=function(){
+									
+								}
+								xmlhttp.open("POST","mail",true);
+								xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+								xmlhttp.setRequestHeader("Content-length",params.length);
+								xmlhttp.setRequestHeader("Connection","close");
+								xmlhttp.send(params);
+							}
+							</script>
+								
 								<script> function emailSend(){
 									var to = document.getElementById("to").value;
 									var body = document.getElementById("email").value;
