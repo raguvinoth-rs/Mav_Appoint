@@ -42,7 +42,7 @@
 	<input type="hidden" name=starttime id="starttime" value="0000-00-00T00:00:00">
 	<input type="hidden" name=endtime id="endtime" value="0000-00-00T00:00:00">
 	<input type="hidden" name=advisor_email id="advisor_email" value="testadvisor1@uta.edu">
-	<input type="hidden" name="email" id="email" value="anand.kadia@mavs.uta.edu">
+	<input type="hidden" name="email" id="email" value="emailid">
 	
 <script> 
 function FormSubmit(){
