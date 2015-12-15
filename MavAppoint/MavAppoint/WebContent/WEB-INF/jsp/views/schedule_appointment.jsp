@@ -84,6 +84,7 @@
 						Description: <br><textarea rows=4 columns="10" name="description"></textarea>
 				</div>
 				<div class="modal-footer">
+					<button type="submit" class="btn btn-default" value="Wait List" onclick="form.action='waitlist'">Wait List</>				
 					<button type="button" class="btn btn-default"
 						data-dismiss="modal"> Close 
 					</button>
